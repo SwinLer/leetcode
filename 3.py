@@ -17,4 +17,19 @@ class Solution:
         return m 
         
 #字符串首重复时出现bug
-#383
+#383 'aab'不通过
+
+
+#正解
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        t={}
+        a=0
+        re=0
+        #哈希表
+        for b in range(len(s)):
+            if s[b] in t:
+                a=max(t[s[b]],a)
+            re=max(re,b-a+1)
+            t[s[b]]=b+1
+        return re
